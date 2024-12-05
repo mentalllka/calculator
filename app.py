@@ -16,7 +16,7 @@ def culc(string):
             'восемь тысяч': '8000', 'девять тысяч': '9000', 'ноль': '0'}
 
 
-    # посимвольный перевод строки в число (используя словарь и список)
+    #  перевод строки в число 
     result = ''
     if string == '':
         return 'Неверный ввод'
@@ -32,40 +32,40 @@ def culc(string):
                         else:
                             result += book[list_line[ind]] # Если следующий элемент не число
                     else:
-                        return 'Неверный ввод' # если следующий элемента нет в словаре, то неверный ввод
+                        return 'Неверный ввод' # если следующий элемента нет в словаре
                 else:
                     result += book[list_line[ind]] #одиночное число
             else:
-                result += book[list_line[ind]] # если это не число, а знак
+                result += book[list_line[ind]] # если это знак
         else:
-            return 'Неверный ввод' # если нет в словаре, то неверный ввод
+            return 'Неверный ввод' # если нет в словаре
 
     # Проверяем что количество скобок правильное
     if result.count('(') != result.count(')'):
         return 'Неверный ввод'
 
-    # Получаем результат выражения с помощью eval()
+    
     int_result = eval(result)
     str_result = str(int_result)
 
 
-    total = '' #итоговый результат
+    total = '' 
 
-    # Записываем минус
+    
     if int_result < 0:
         total += 'минус'
         str_result = str_result[1:]
         int_result = str(str_result)
 
-    # Меняю в словаре местами ключ и значение
+   
     invbook = {v: k for k, v in book.items()}
 
-    # Проверяю уникальные числа
+    #  перевод чисел в слова
     if 11<= int_result <= 19 or int_result == 0:
         total += invbook[str_result]
-    # Перевожу остальные числа
+   
     else:
-        delit = '1' + '0' * len(str_result) # делитель чтобы разделять числа >= 100
+        delit = '1' + '0' * len(str_result) 
         for el in range(len(str_result)):
             if int(str(int_result % int(delit) - int_result % int(delit[:-1]))) != 0 and not(11 <= int(str(int_result % int(delit))) <= 19):# не берём уникальные числа, взяли уже раньше 
                 total += invbook[str(int_result % int(delit) - int_result % int(delit[:-1]))] + ' ' # 987 => 900-80-7 
@@ -73,12 +73,12 @@ def culc(string):
                 total += invbook[str(int_result % int(delit))]
                 break
             delit = delit[:-1]
-    # Возвращаю результат работы программы
+   
     return total
 
 
 
-# !!! Начало работы !!!
+
 
 string = input('Введите математическое выражение написанное буквами: ')
 print(culc(string))
