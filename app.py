@@ -81,4 +81,4 @@ def culc(string):
 
 
 string = input('Введите математическое выражение написанное буквами: ')
-print(culc(string))
+print("Результат: " + culc(string))
