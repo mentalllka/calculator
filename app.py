@@ -67,7 +67,7 @@ def culc(string):
     else:
         delit = '1' + '0' * len(str_result) 
         for el in range(len(str_result)):
-            if int(str(int_result % int(delit) - int_result % int(delit[:-1]))) != 0 and not(11 <= int(str(int_result % int(delit))) <= 19):# не берём уникальные числа, взяли уже раньше 
+            if int(str(int_result % int(delit) - int_result % int(delit[:-1]))) != 0 and not(11 <= int(str(int_result % int(delit))) <= 19):
                 total += invbook[str(int_result % int(delit) - int_result % int(delit[:-1]))] + ' ' # 987 => 900-80-7 
             elif 11 <= int(str(int_result % int(delit))) <= 19:
                 total += invbook[str(int_result % int(delit))]
